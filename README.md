@@ -1,7 +1,7 @@
 # v0.dev
 
 <div align="center">
-  <img src="assets/cde9407d9a3f0dafc76e1377dd71af0b.png" alt="v0.dev Logo" width="180" />
+  <img src="https://registry.npmmirror.com/@lobehub/icons-static-png/1.44.0/files/dark/v0.png" alt="v0.dev Logo" width="180" />
   <h3>AI-powered web application development</h3>
   <p>Build stunning web applications with the power of AI</p>
   
@@ -15,6 +15,91 @@
 </div>
 
 <br />
+
+## 🌟 Highlight: Use v0 System Prompts with Any AI Model
+
+**Get the full v0 system prompts directly from our repository!**
+
+You can now use the same system prompts that power v0.dev with any compatible AI model. This allows you to experiment with v0-like capabilities in your preferred environment:
+
+```bash
+# Direct link to v0 system prompts
+https://raw.githubusercontent.com/likhonsheikhofficial/v0.dev/refs/heads/main/System/Prompts/v0.txt
+```
+
+### Example Usage with Different Models
+
+#### Python (Together API)
+```python
+from together import Together
+
+# Initialize the client
+client = Together()
+
+# Get v0 system prompt
+import requests
+v0_prompt = requests.get("https://raw.githubusercontent.com/likhonsheikhofficial/v0.dev/refs/heads/main/System/Prompts/v0.txt").text
+
+# Create completion with v0 system prompt
+response = client.chat.completions.create(
+    model="deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free",
+    messages=[
+        {"role": "system", "content": v0_prompt},
+        {"role": "user", "content": "Create a simple product card with an image, title, price, and add to cart button"}
+    ]
+)
+print(response.choices[0].message.content)
+```
+
+#### TypeScript (OpenAI API)
+```typescript
+import { OpenAI } from 'openai';
+import fetch from 'node-fetch';
+
+async function generateUIWithV0Prompt() {
+  // Initialize the client
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+
+  // Get v0 system prompt
+  const response = await fetch('https://raw.githubusercontent.com/likhonsheikhofficial/v0.dev/refs/heads/main/System/Prompts/v0.txt');
+  const v0Prompt = await response.text();
+
+  // Create completion with v0 system prompt
+  const completion = await openai.chat.completions.create({
+    model: "gpt-4",
+    messages: [
+      { role: "system", content: v0Prompt },
+      { role: "user", content: "Create a login form with email and password fields" }
+    ],
+  });
+
+  console.log(completion.choices[0].message.content);
+}
+
+generateUIWithV0Prompt();
+```
+
+#### cURL
+```bash
+# First, save the v0 prompt to a file
+curl -s https://raw.githubusercontent.com/likhonsheikhofficial/v0.dev/refs/heads/main/System/Prompts/v0.txt > v0_prompt.txt
+
+# Then use it in your API call
+curl https://api.together.xyz/v1/chat/completions \
+  -H "Authorization: Bearer $TOGETHER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "messages": [
+      {"role": "system", "content": "'$(cat v0_prompt.txt)'"},
+      {"role": "user", "content": "Design a simple navigation bar with logo, links, and dark mode toggle"}
+    ]
+  }'
+```
+
+Simply copy the contents from the link above and use it as a system prompt with your favorite AI model to unlock similar web development capabilities!
 
 ## What is v0.dev?
 
